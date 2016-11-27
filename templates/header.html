@@ -1,0 +1,49 @@
+<md-toolbar ng-controller="AppCtrl">
+	<div class="md-toolbar-tools">
+		<md-button class="md-icon-button" ng-click="toggleLeft()">
+			<md-icon class="material-icons">menu</md-icon>
+		</md-button>
+		<h2>List Nexus</h2>
+	</div>
+</md-toolbar>
+
+
+<div ng-controller="AppCtrl" layout="column" ng-cloak >
+
+  <section layout="row" flex >
+
+	<md-sidenav
+		class="md-sidenav-left"
+		md-component-id="left"
+		md-whiteframe="4">
+
+	 <md-toolbar class="md-theme-indigo">
+        <!-- <span flex></span> -->
+        <div layout="column" layout-align="space-around center">
+        	<img src="http://www.nganimate.org/img/angular-logo-big.png" style="max-height:100px; max-width:100px;">
+        	<div>List Nexus</div>
+        </div>
+      </md-toolbar>
+
+	  <md-content layout-padding ng-controller="LeftCtrl">
+		<md-button ng-click="close()" class="md-primary" hide-gt-md>
+		  Close Sidenav Left
+		</md-button>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<span>List</span>
+			</div>
+
+		</md-toolbar>
+		<div ng-controller="menuController">
+			<md-list flex>
+				<md-list-item ng-repeat="item in menu">
+					<h3> {{ item }} </h3>
+					<md-divider></md-divider>
+				</md-list-item>
+			</md-list>
+		</div>
+	  </md-content>
+	</md-sidenav>
+
+	<!-- Content of the app-->

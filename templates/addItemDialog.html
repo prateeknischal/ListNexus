@@ -1,0 +1,39 @@
+<md-dialog>
+	<form ng-cloak>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>Add Item</h2>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-click="cancel()">
+					<md-icon class="material-icons">clear</md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+
+		<md-dialog-content>
+			<div class="md-dialog-content">
+				<div layout="column">
+					<strong>{{category}}</strong>
+					<md-input-container class="md-block">
+						<label>Item</label>
+						<input ng-model="item.item">
+					</md-input-container>
+
+					<md-input-container class="md-block">
+						<label>Auth</label>
+						<md-select ng-model="item.auth">
+							<md-option ng-repeat="authType in auth" ng-value="authType.value">
+								{{authType.value}}
+							</md-option>
+						</md-select>
+					</md-input-container>
+				</div>
+			</div>
+		</md-dialog-content>
+
+		<md-dialog-actions layout="row" layout-align="space-around center">
+			<md-button class="md-raised md-warn">Cancel</md-button>
+			<md-button class="md-raised md-primary" ng-click="addEntry(item, category)">Submit</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

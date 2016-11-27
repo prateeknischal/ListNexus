@@ -1,0 +1,40 @@
+<md-card>
+	<md-card-title>
+		<md-toolbar layout="row">
+		<div class="md-toolbar-tools">
+			<span flex> {{ sub.subject }} </span>
+			<md-button class="md-raised md-accent">Submit</md-button>
+		</div>
+	</md-toolbar>
+	</md-card-title>
+
+	<md-card-content>
+		<md-list flex>
+			<md-list-item class="md-2-line" ng-repeat="item in sub.list">
+
+				<div layout="column" flex>
+					<div layout="row" layout-padding>
+						<div class="md-list-item-text" layout="column">
+							<strong>{{item.item}} </strong>
+							<p>{{item.userId}}</p>
+						</div>
+						<div>
+							<md-checkbox class="md-warm md-align-left" flex  
+								ng-checked="item.isCompleted" 
+								ng-click="toggle(item.id)">
+							</md-checkbox>
+						</div>
+					</div>
+					<md-divider></md-divider>
+				</div>
+
+			</md-list-item>
+		</md-list>
+	</md-card-content>
+
+	<md-card-actions layout="row" layout-align="end center">
+		<md-button class="md-fab md-primary" ng-click="addItem($event, sub.subject)">
+			<md-icon class="material-icons">add</md-icon>
+		</md-button>
+	</md-card-actions>
+</md-card>

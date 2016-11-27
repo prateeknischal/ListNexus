@@ -1,0 +1,1 @@
+angular.module("listNexus", ["ui.bootstrap", "ngMaterial"]);

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="listNexus">
+</style>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width" initial-scale=1>
+	<title>List Nexus</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+</head>
+<body ng-controller="showList">
+	<header ng-include="'templates/header.html'"></header>
+
+	<div ng-cloak>
+		<md-content class="md-padding" layout-xs="column" layout="row" style="background:#bdbdbd;">
+			<div flex layout="column" ng-repeat="sub in list">
+				<div ng-include="'templates/cards.html'"></div>
+			</div>
+		</md-content>
+
+	</div>
+	<footer ng-include="'templates/footer.html'"></footer>
+</body>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+  	<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap-tpls.js"></script>
+	<script src="app.js"></script>
+	<script src="controllers/showList.js"></script>
+	<script src="scripts/sideNav.js"></script>
+</html>
