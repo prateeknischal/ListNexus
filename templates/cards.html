@@ -1,11 +1,14 @@
 <md-card>
 	<md-card-title>
 		<md-toolbar layout="row">
-		<div class="md-toolbar-tools">
-			<span flex> {{ sub.subject }} </span>
-			<md-button class="md-raised md-accent">Submit</md-button>
-		</div>
-	</md-toolbar>
+			<div class="md-toolbar-tools">
+					<span flex> 
+						<span md-font=>{{ sub.subject }}</span>
+						<md-button class="md-fab md-mini md-accent">{{ getIncomplete($index) }}</md-button>
+					</span>
+					<md-button class="md-raised md-accent">Submit</md-button>
+			</div>
+		</md-toolbar>
 	</md-card-title>
 
 	<md-card-content>
@@ -33,7 +36,7 @@
 	</md-card-content>
 
 	<md-card-actions layout="row" layout-align="end center">
-		<md-button class="md-fab md-primary" ng-click="addItem($event, sub.subject)">
+		<md-button class="md-fab md-primary" ng-click="addItem($event, sub.subject, $index)">
 			<md-icon class="material-icons">add</md-icon>
 		</md-button>
 	</md-card-actions>

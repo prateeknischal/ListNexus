@@ -1,6 +1,7 @@
 angular
 	.module("listNexus")
-	.controller("showList", ['$scope', '$mdDialog', function($scope, $mdDialog) {
+	.controller("showList", ['$scope', '$mdDialog', '$rootScope', function($scope, $mdDialog, $rootScope) {
+		$rootScope.userId = "prateek";
 		$scope.list = [
 			{
 				"id" : 1,
@@ -37,7 +38,7 @@ angular
 			}, 
 			{
 				"id" : 2,
-				"subject" : "medicines",
+				"subject" : "Medicines",
 				"date" : "26-Nov-2016 23:25:59",
 				"userId" : "ankit",
 				"auth" : "public",
@@ -70,6 +71,7 @@ angular
 				]
 			}
 		];
+		$scope.diff = [];
 
 		$scope.toggle = function(itemId){
 			angular.forEach($scope.list, function(subject) {
@@ -83,7 +85,17 @@ angular
 			});
 		};
 
-		$scope.addItem = function(ev, category){
+		$scope.getIncomplete = function(index) {
+			var val = 0;
+			angular.forEach($scope.list[index].list, function(item){
+				if (!item.isCompleted) {
+					++val;
+				}
+			});
+			return val;
+		}
+
+		$scope.addItem = function(ev, category, categoryId){
 			$mdDialog.show({
 				controller : DialogController,
 				templateUrl : 'templates/addItemDialog.html',
@@ -91,15 +103,20 @@ angular
 				targetEvent : ev,
 				clickOutsideToClose : false,
 				locals : {
-					category : category
+					category : category,
+					list : $scope.list[categoryId], //hardcoded for now get id later
+					userId : $rootScope.userId,
+					diff : $scope.diff
 				}
 			}).then(function(answer) {
-				console.log(answer);
+				console.log("added");
 			});
 		};
 
-		function DialogController($scope, $mdDialog, category) {
+		function DialogController($scope, $mdDialog, category, list, userId, diff) {
 			$scope.category = category;
+			$scope.list = list;
+			$scope.diff = diff;
 			$scope.auth = [
 				{
 					value : "public",
@@ -119,12 +136,16 @@ angular
 			};
 
 			$scope.answer = function(answer) {
-				$mdDialog.hide(answer);
+				console.log(answer);
 			};
 
 			$scope.addEntry = function(item, sub) {
 				item.subject = sub;
-				console.log(item);
+				item.userId = userId;
+				$scope.list.list.push(item);
+				$scope.diff.push(item);
+				console.log($scope.diff);
+				$scope.hide();
 			}
 		};	
 	}]);
