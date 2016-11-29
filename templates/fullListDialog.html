@@ -1,0 +1,41 @@
+<md-dialog aria-label="list of items">
+	<md-toolbar>
+		<div class="md-toolbar-tools">
+			<h2>{{category}}</h2>
+		</div>
+	</md-toolbar>
+
+	<md-dialog-content>
+		<div class="md-dialog-content">
+			<div layout="column">
+				<md-list flex>
+					<md-list-item class="md-2-line" ng-repeat="item in list.list track by $index">
+
+						<div layout="column" flex>
+							<div layout="row" layout-padding>
+								<div class="md-list-item-text" layout="column">
+									<strong>{{item.item}} </strong>
+									<p>{{item.userId}}</p>
+								</div>
+								<div>
+									<md-checkbox class="md-warm md-align-left" flex  
+										ng-checked="item.isCompleted" 
+										ng-click="toggle(item.id)">
+									</md-checkbox>
+								</div>
+							</div>
+							<md-divider></md-divider>
+						</div>
+
+					</md-list-item>
+				</md-list>
+			</div>
+		</div>
+	</md-dialog-content>
+
+	<md-dialog-actions layout="row" layout-align="end center">
+		<md-button class="md-fab md-primary" ng-click="addItem($event, category, categoryId)">
+			<md-icon class="material-icons">add</md-icon>
+		</md-button>
+	</md-dialog-actions>
+</md-dialog>

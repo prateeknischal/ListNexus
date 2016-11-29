@@ -3,17 +3,18 @@
 		<md-toolbar layout="row">
 			<div class="md-toolbar-tools">
 					<span flex> 
-						<span md-font=>{{ sub.subject }}</span>
-						<md-button class="md-fab md-mini md-accent">{{ getIncomplete($index) }}</md-button>
+						<span ng-click="seeFullList($event, sub.subject, $index)">{{ sub.subject }}</span>
+						<md-button class="md-fab md-mini md-accent" ng-init="toggleCompleted=true" ng-model="toggleCompleted" ng-click="toggleCompleted=!toggleCompleted">{{ getIncomplete($index) }}</md-button>
 					</span>
-					<md-button class="md-raised md-accent">Submit</md-button>
+					<md-button class="md-raised md-accent" ng-click="finalSubmit($index)">Submit</md-button>
 			</div>
 		</md-toolbar>
 	</md-card-title>
 
 	<md-card-content>
 		<md-list flex>
-			<md-list-item class="md-2-line" ng-repeat="item in sub.list">
+			<md-list-item class="md-2-line" ng-repeat="item in sub.list | filter : (toggleCompleted ? '' : {'isCompleted' : false} ) track by $index "  ng-if="$index>=3?false:true"> 
+			<!-- Filter for the list to show all or only incomplete items -->
 
 				<div layout="column" flex>
 					<div layout="row" layout-padding>
