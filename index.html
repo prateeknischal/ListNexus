@@ -3,7 +3,7 @@
 </style>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width" initial-scale=1>
+	<meta name="viewport" content="width=device-width; initial-scale=1; user-scalable=no" >
 	<title>List Nexus</title>
 	<link href="resources/css/MaterialIcons.css" rel="stylesheet">
 	<link rel="stylesheet" href="resources/css/angular-material.min.css">
@@ -11,7 +11,7 @@
 <body ng-controller="showList as vm">
 	<header ng-include="'templates/header.html'"></header>
 	<div ng-cloak>
-		<md-content class="md-padding" layout-xs="column" layout="row" style="background:#bdbdbd;">
+		<md-content class="md-padding" layout-xs="column" layout="row" style="background:#bdbdbd; padding-top: 65px;">
 			<div flex layout="column" ng-repeat="sub in list track by $index">
 				<div ng-include="'templates/cards.html'"></div>
 			</div>
