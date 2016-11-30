@@ -3,12 +3,13 @@
 </style>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width; initial-scale=1; user-scalable=no" >
+	<meta name="viewport" content="width=device-width initial-scale=1 user-scalable=no" >
 	<title>List Nexus</title>
 	<link href="resources/css/MaterialIcons.css" rel="stylesheet">
 	<link rel="stylesheet" href="resources/css/angular-material.min.css">
 </head>
 <body ng-controller="showList as vm">
+	<md-progress-cicular md-mode="determinate" ng-value="vm"> 
 	<header ng-include="'templates/header.html'"></header>
 	<div ng-cloak>
 		<md-content class="md-padding" layout-xs="column" layout="row" style="background:#bdbdbd; padding-top: 65px;">
@@ -31,4 +32,5 @@
 	<script src="app.js"></script>
 	<script src="controllers/showList.js"></script>
 	<script src="scripts/sideNav.js"></script>
+	<script src="scripts/userCard.js"></script>
 </html>

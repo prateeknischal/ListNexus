@@ -2,7 +2,12 @@ angular
 	.module("listNexus")
 	.controller("showList", ['$scope', '$mdDialog', '$rootScope', 
 				function($scope, $mdDialog, $rootScope) {
-		$rootScope.userId = "prateek";
+
+		$rootScope.userinfo = {
+			"username" : "Prateek",
+			"isAdmin" : true
+		};
+
 		$scope.finalSubmit = function(categoryId) {
 			console.log(categoryId);
 			console.log($scope.diff);
